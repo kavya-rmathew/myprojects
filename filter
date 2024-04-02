@@ -1,0 +1,49 @@
+import java.util.ArrayList;
+import java.util.List;
+public class MyClass{
+    
+    public static void main(String args[]){
+        
+        List<User> users = new ArrayList<>();
+        
+        users.add(new User("Afsal", 71));
+        users.add(new User("Kavya", 75));
+        users.add(new User("Livya", 26));
+        
+        /*User user1 = new User("Afsal", 71);
+        User user2 = new User("Kavya", 75);
+        User user3 = new User("Livya", 26);
+        
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);*/
+        
+        /* for(User user : users){
+            System.out.println(user.getUsername() + " " + user.getAge());
+        }*/
+        
+        users.stream().filter(user -> {
+            return user.getAge()>70;
+        }).forEach(user -> System.out.println(user.getUsername() + " " + user.getAge()));
+    }
+    
+}
+
+class User{
+    
+    private String username;
+    private int age;
+    
+    public User(String username, int age){
+        this.username = username;
+        this.age = age;
+    }
+    
+    public String getUsername(){
+        return username;
+    }
+    
+    public int getAge(){
+        return age;
+    }
+}
