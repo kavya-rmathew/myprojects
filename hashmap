@@ -1,0 +1,40 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+
+
+public class MyClass{
+    
+    public static void main(String args[]){
+        
+        Map<String, Integer> map = new HashMap<>();
+        map.put("one", 1);
+        map.put("two", 2);
+        map.put("three", 3);
+        map.put("four", 7);
+        map.put("five", 5);
+        map.put("six", 6);
+        map.put("seven", 7); // Duplicate key
+        map.put("eight", 8);
+        map.put("nine", 7);
+        map.put("ten", 10); // Another duplicate key
+        
+        int num = 7;
+        Set<String> str = new HashSet<>();
+        
+        for(String s : map.keySet()){
+            if(num == map.get(s)){
+                str.add(s);
+            }
+        }
+        
+        for(String s1 : str){
+            map.remove(s1);
+        }
+        
+        System.out.println(map);
+        
+        }
+    }
+
