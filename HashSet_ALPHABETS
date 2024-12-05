@@ -1,0 +1,42 @@
+import java.util.Set;
+import java.util.HashSet;
+
+public class PangramDetector {
+    private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+
+    public String findMissingLetters(String sentence) {
+        Set<Character> sentenceSet = new HashSet<>();
+        
+        for(char c : sentence.toLowerCase().toCharArray()){
+            if(Character.isLetter(c)){
+                sentenceSet.add(c);
+            }
+        }
+        
+        StringBuilder stringBuilder = new StringBuilder();
+        for(char c : ALPHABET.toCharArray()){
+            if(!sentenceSet.contains(c)){
+                stringBuilder.append(c);
+            }
+        }
+        System.out.println(stringBuilder.toString());
+        return stringBuilder.toString();
+        
+    }
+    
+    
+    public static void main(String[] args) {
+        PangramDetector pd = new PangramDetector();
+        
+        boolean success = true;
+
+        success = success && pd.findMissingLetters("The quick brown fox jumps over the lazy dog").equals("");
+        success = success && pd.findMissingLetters("The slow purple wanders past the quiescent canine").equals("bfgjkmvxyz");
+
+        if (success) {
+            System.out.println("All tests passed.");
+        } else {
+            System.out.println("At least one of your tests failed.");
+        }
+    }
+}

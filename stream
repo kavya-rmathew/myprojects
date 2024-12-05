@@ -1,0 +1,62 @@
+// Java code​​​​​​‌​‌​‌‌‌‌​​​‌‌‌​‌‌‌‌​​‌​‌​ below
+import java.util.Map;
+import java.util.Collections;
+import java.util.List;
+
+// Write your answer here, and then test your code.
+// Your job is to implement the findAnswer() method.
+
+class Answer {
+
+    // Change these boolean values to control whether you see
+    // the expected result and/or hints.
+    static boolean showExpectedResult = false;
+    static boolean showHints = false;
+    static int largestScore =0;
+    // Return the highest grade for the students with a specific major
+    static int findAnswer(List<Student> students, String major) {
+        // Your code goes here.
+
+        students.stream().filter(student -> {
+            return student.getMajor().equals(major);
+        }).forEach(student -> {
+            largestScore = Collections.max(student.getGrades().values());
+            
+        });
+        return largestScore;
+    }
+
+}
+
+class Student {
+    private String firstname;
+    private String lastname;
+    private String major;
+    private Map<String, Integer> grades;
+
+    public Student(String firstname, String lastname, String major, Map<String, Integer> grades) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.major = major;
+        this.grades = grades;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public Map<String, Integer> getGrades() {
+        return grades;
+    }
+}
+
+
+
